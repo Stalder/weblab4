@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * This file allows to connect to database and execute SQL queries.
+ * Vars bellow are credentials for local database, created for this lab.
+ * Then a little example of select query and template for insert function.
+ */
 $user = 'root';
 $password = 'root';
 $db = 'lab4';
@@ -11,7 +15,7 @@ $select_articles = 'SELECT * from articles';
 
 $mysqli = new mysqli($host, $user, $password, $db, $port);
 if ($mysqli->connect_errno) {
-    echo "Не удалось подключиться к MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+    die('Cannot connect to mySQL');
 }
 
 $res = $mysqli->query("SELECT * FROM articles");
