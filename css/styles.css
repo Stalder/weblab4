@@ -7,3 +7,9 @@
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
 }
+
+.my-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

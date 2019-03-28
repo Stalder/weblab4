@@ -29,10 +29,11 @@ HTML;
 function renderArticleForAdmin($title, $date)
 {
     $headerHeredoc = <<<HTML
-        <div>
-            <h3>$title</h3>
-            <p>$date</p>
+        <div class="my-row">
+            <h4 style="flex: 1">$title</h4>
+            <a class="waves-effect waves-light btn red"><i class="material-icons">delete</i></a>
         </div>
+        <div class="divider"></div>
 HTML;
     echo $headerHeredoc;
 }
