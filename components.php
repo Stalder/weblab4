@@ -13,9 +13,14 @@ HTML;
 function renderArticlePreview($title, $text, $date)
 {
     $headerHeredoc = <<<HTML
-        <div>
-            <h3>$title</h3>
-            <p>$text</p>
+        <div class="card">
+            <div class="card-content">
+                <h3>$title</h3>
+                <p>$text</p>
+            </div>
+            <div class="card-action">
+                <a href="#" style="color: #1565c0">Читать дальше</a>
+            </div>
         </div>
 HTML;
     echo $headerHeredoc;
