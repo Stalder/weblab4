@@ -1,3 +1,4 @@
+<?php include_once "components.php"?>
 <!DOCTYPE html>
 
 <html>
@@ -9,9 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <header class="row blue darken-3 z-depth-2 section header">
-        <h1 class="grey-text text-lighten-4">Новостной портал</h1>
-    </header>
+    <?php renderHeader('Новостной портал') ?>
 </div>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 </body>
