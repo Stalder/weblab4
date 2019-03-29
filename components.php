@@ -10,7 +10,7 @@ HTML;
     echo $headerHeredoc;
 }
 
-function renderArticlePreview($title, $text, $date)
+function renderArticle($title, $text, $date)
 {
     $headerHeredoc = <<<HTML
         <div class="card">
@@ -18,20 +18,17 @@ function renderArticlePreview($title, $text, $date)
                 <h3>$title</h3>
                 <p>$text</p>
             </div>
-            <div class="card-action">
-                <a href="#" style="color: #1565c0">Читать дальше</a>
-            </div>
         </div>
 HTML;
     echo $headerHeredoc;
 }
 
-function renderArticleForAdmin($title, $date)
+function renderArticleForAdmin($id, $title, $date)
 {
     $headerHeredoc = <<<HTML
         <div class="my-row">
             <h4 style="flex: 1">$title</h4>
-            <a class="waves-effect waves-light btn red"><i class="material-icons">delete</i></a>
+            <a class="waves-effect waves-light btn red" href="remove_article.php"><i class="material-icons">delete</i></a>
         </div>
         <div class="divider"></div>
 HTML;

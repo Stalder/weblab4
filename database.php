@@ -11,24 +11,42 @@ $host = 'localhost';
 $port = 8889;
 $table = 'articles';
 
-$select_articles = 'SELECT * from articles';
+function createConnection()
+{
+    $user = 'root';
+    $password = 'root';
+    $db = 'lab4';
+    $host = 'localhost';
+    $port = 8889;
 
-$mysqli = new mysqli($host, $user, $password, $db, $port);
-if ($mysqli->connect_errno) {
-    die('Cannot connect to mySQL');
+    $mysqli = new mysqli($host, $user, $password, $db, $port);
+    if ($mysqli->connect_errno) {
+        die('Cannot connect to mySQL');
+    }
+
+    return $mysqli;
 }
 
-$res = $mysqli->query("SELECT * FROM articles");
+function requestArticles() {
+    $mysqli = createConnection();
 
-echo "Записи в таблице\n";
-$res->data_seek(0);
-while ($row = $res->fetch_assoc()) {
-    echo " id = " . $row['id'] . "\n";
+    $select_articles = 'SELECT * from articles';
+    $res = $mysqli->query($select_articles);
+    $res->data_seek(0);
+
+    return $res;
 }
 
 function createArticle($title, $text)
 {
+    $mysqli = createConnection();
     $insert_query = 'INSERT INTO `articles` (`id`, `title`, `text`, `date`) VALUES (NULL, ' . $title . ', ' . $text . ', ' . date() . ')';
-    $GLOBALS['mysqli']->query("SELECT * FROM articles");
-    echo $title;
+    $mysqli->query($insert_query);
+}
+
+function removeArticle($id)
+{
+    $mysqli = createConnection();
+    $remove_query = 'delete from article where id = ' . $id;
+    $mysqli->query($remove_query);
 }
