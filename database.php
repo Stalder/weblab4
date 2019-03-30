@@ -2,7 +2,6 @@
 /**
  * This file allows to connect to database and execute SQL queries.
  * Vars bellow are credentials for local database, created for this lab.
- * Then a little example of select query and template for insert function.
  */
 $user = 'root';
 $password = 'root';
@@ -40,13 +39,28 @@ function requestArticles() {
 function createArticle($title, $text)
 {
     $mysqli = createConnection();
-    $insert_query = 'INSERT INTO `articles` (`id`, `title`, `text`, `date`) VALUES (NULL, ' . $title . ', ' . $text . ', ' . date() . ')';
-    $mysqli->query($insert_query);
+    $insert_query = "INSERT INTO articles (title, text)
+    VALUES ('$title', '$text');";
+    ;
+
+    if ($mysqli->query($insert_query) === TRUE) {
+        return 1;
+    } else {
+        echo $mysqli->error;
+        return 0;
+    }
+
 }
 
 function removeArticle($id)
 {
     $mysqli = createConnection();
-    $remove_query = 'delete from article where id = ' . $id;
-    $mysqli->query($remove_query);
+    $remove_query = 'delete from articles where id = ' . $id;
+
+    if ($mysqli->query($remove_query) === TRUE) {
+        return 1;
+    } else {
+        echo $mysqli->error;
+        return 0;
+    }
 }

@@ -10,7 +10,7 @@ HTML;
     echo $headerHeredoc;
 }
 
-function renderArticle($title, $text, $date)
+function renderArticle($title, $text)
 {
     $headerHeredoc = <<<HTML
         <div class="card">
@@ -23,12 +23,18 @@ HTML;
     echo $headerHeredoc;
 }
 
-function renderArticleForAdmin($id, $title, $date)
+function renderArticleForAdmin($id, $title)
 {
     $headerHeredoc = <<<HTML
         <div class="my-row">
             <h4 style="flex: 1">$title</h4>
-            <a class="waves-effect waves-light btn red" href="remove_article.php"><i class="material-icons">delete</i></a>
+            <form action="remove_article.php" method="post" >
+                <input type="hidden" value="$id" name="id">
+                <button class="btn waves-effect waves-light red" type="submit" name="action">
+                    <i class="material-icons">delete</i>
+                </button>
+            </form>
+            <!--<a class="waves-effect waves-light btn red" href="remove_article.php"><i class="material-icons">delete</i></a>-->
         </div>
         <div class="divider"></div>
 HTML;
